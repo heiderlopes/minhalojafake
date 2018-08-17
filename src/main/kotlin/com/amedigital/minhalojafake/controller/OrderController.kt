@@ -13,7 +13,8 @@ class OrderController {
     @PostMapping()
     fun create(response: HttpServletResponse): String {
         val random = Random()
-        val orderId = random.nextLong().toString()
+        random.nextInt(9999999)
+        val orderId = random.nextLong().toString() + "-02"
         response.addHeader("Location", orderId)
         response.addHeader("X-Deep-Link", "fake://order?id=$orderId")
         return "OK"
